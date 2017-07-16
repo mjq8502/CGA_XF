@@ -5,7 +5,7 @@
   <ContentPage.Content>
     <StackLayout>
       <StackLayout.Children>
-        <Button Text="AddTee" />
+        <Button Text="AddTee" WidthRequest="150"  HorizontalOptions="Center" />
       </StackLayout.Children>
     </StackLayout>
 
