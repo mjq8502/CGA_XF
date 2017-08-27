@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             
              x:Class="GolfApp2.Main">
 <ContentPage.Content>
   <StackLayout>
-    <StackLayout.Children BackgroundImage="C:\MJQ\zxz\CGA_XF\GolfApp2\GolfApp2\GolfApp2\Images\screenshot_20170212_094404.png">
+    <StackLayout.Children BackgroundImage="C:\CompleteGolfApp_XF\GolfApp2\GolfApp2\GolfApp2\Images\screenshot_20170212_094404.png">
+      <!--<StackLayout.Children BackgroundImage="C:\MJQ\zxz\CGA_XF\GolfApp2\GolfApp2\GolfApp2\Images\screenshot_20170212_094404.png">-->
       <Button Text="Courses" WidthRequest="150"  HorizontalOptions="Center"/>
       <Button Text="Tees" x:Name="mainTeesButton" WidthRequest="150"  HorizontalOptions="Center" />
       <Button Text="Scores" WidthRequest="150"  HorizontalOptions="Center"/>

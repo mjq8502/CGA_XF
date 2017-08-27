@@ -9,10 +9,12 @@ namespace GolfApp2
 {
     public class App : Application
     {
+
         public App()
         {
             MainPage = new Main();
         }
+
 
         protected override void OnStart()
         {
