@@ -9,6 +9,7 @@ namespace GolfApp2
     public class Database
     {
         static object locker = new object();
+
         ISQLiteService SQLite
         {
             get
@@ -16,6 +17,7 @@ namespace GolfApp2
                 return DependencyService.Get<ISQLiteService>();
             }
         }
+
         readonly SQLiteConnection connection;
         readonly string DatabaseName;
 

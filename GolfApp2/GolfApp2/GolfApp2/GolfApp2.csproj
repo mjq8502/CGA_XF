@@ -38,7 +38,6 @@
     <Compile Include="App.cs" />
     <Compile Include="BaseItem.cs" />
     <Compile Include="Database.cs" />
-    <Compile Include="IFileHelper.cs" />
     <Compile Include="ISQLiteService.cs" />
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>

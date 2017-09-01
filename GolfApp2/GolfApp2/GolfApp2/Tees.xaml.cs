@@ -13,6 +13,10 @@ namespace GolfApp2
         public Tees()
         {
             InitializeComponent();
+
+            this.BackgroundImage = "screenshot_20170225_142830.png";
+            //this.BackgroundImage = "colberthills.png";
+             //this.BackgroundImage = "screenshot_20170212_094404.png";
         }
     }
 }

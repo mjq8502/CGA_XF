@@ -17,6 +17,8 @@ namespace GolfApp2
         {
             InitializeComponent();
 
+            this.BackgroundImage = "screenshot_20170212_094404.png";
+
             this.mainTeesButton.Clicked += async (sender, args) =>
             {
                 await Navigation.PushModalAsync(new Tees());
@@ -24,8 +26,6 @@ namespace GolfApp2
 
             var database = new Database("People"); // Creates (if does not exist) a database named People
             database.CreateTable<Person>(); // Creates (if does not exist) a table of type Person
-
-            this.BackgroundImage = "screenshot_20170212_094404.png";
 
            // database.SaveItem<Person>(new Person { Age = 12, FirstName = "Bill", LastName = "Haley", Gender = Gender.Male });
            // database.SaveItem<Person>(new Person { Age = 22, FirstName = "Tom", LastName = "Smoith", Gender = Gender.Male });
