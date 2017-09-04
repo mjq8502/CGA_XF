@@ -171,6 +171,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\screenshot_20170225_142830.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\screenshot_20170225_142830.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\colberthills.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\colberthills.png" />
     <Content Include="Resources\drawable-xxhdpi\colberthills.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\screenshot_20170225_142830.png" />
     <Content Include="Resources\drawable\colberthills.png" />

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GolfApp2.Tees">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"                     
+                    iOS="10, 20, 10, 0"                     
+                    Android="10, 0"                     
+                    WinPhone="10, 0" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="65*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+        
+    <StackLayout Grid.Row="1">
+      <StackLayout.Children>
+                <ListView x:Name="listViewTees" WidthRequest="200" BackgroundColor="White"/>
+
+      </StackLayout.Children>
+    </StackLayout>
+
+    <StackLayout Grid.Row="2">
+        <StackLayout.Children>
+
+            <Button x:Name="buttonAddTee" Text="AddTee" WidthRequest="150"  HorizontalOptions="Center" />
+        </StackLayout.Children>
+    </StackLayout>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -15,25 +15,33 @@ namespace GolfApp2
 
         public Main()
         {
-            InitializeComponent();
-
-            this.BackgroundImage = "screenshot_20170212_094404.png";
-
-            this.mainTeesButton.Clicked += async (sender, args) =>
+            try
             {
-                await Navigation.PushModalAsync(new Tees());
-            };
+                InitializeComponent();
 
-            var database = new Database("People"); // Creates (if does not exist) a database named People
-            database.CreateTable<Person>(); // Creates (if does not exist) a table of type Person
+                this.BackgroundImage = "screenshot_20170212_094404.png";
+                //Application.Current.MainPage = new NavigationPage(this);
 
-           // database.SaveItem<Person>(new Person { Age = 12, FirstName = "Bill", LastName = "Haley", Gender = Gender.Male });
-           // database.SaveItem<Person>(new Person { Age = 22, FirstName = "Tom", LastName = "Smoith", Gender = Gender.Male });
+                this.mainTeesButton.Clicked += async (sender, args) =>
+                {
+                //await Navigation.PushModalAsync(new Tees());
+                await Application.Current.MainPage.Navigation.PushAsync(new Tees());
+                };
 
-            var zz = database.GetItems<Person>();
+                var database = new Database("People"); // Creates (if does not exist) a database named People
+                database.CreateTable<Person>(); // Creates (if does not exist) a table of type Person
 
-            var z = 5;
+                // database.SaveItem<Person>(new Person { Age = 12, FirstName = "Bill", LastName = "Haley", Gender = Gender.Male });
+                // database.SaveItem<Person>(new Person { Age = 22, FirstName = "Tom", LastName = "Smoith", Gender = Gender.Male });
 
+                var zz = database.GetItems<Person>();
+
+                var z = 5;
+            }
+            catch(Exception ex)
+            {
+                var ss = ex;
+            }
         }
 
 

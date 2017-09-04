@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GolfApp2.Screens.TeesEntry">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"                     
+                    iOS="10, 20, 10, 0"                     
+                    Android="10, 0"                     
+                    WinPhone="10, 0" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="40*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal">
+                <StackLayout.Children>
+                    <Label Text="Tee Name" WidthRequest="100" VerticalOptions="Center" />
+                    <Entry x:Name="entryTeeName" BackgroundColor="White" WidthRequest="100" VerticalOptions="Center" />
+                </StackLayout.Children>
+            </StackLayout>
+            
+            <StackLayout Grid.Row="2" Orientation="Horizontal" VerticalOptions="Center">
+                <StackLayout.Children>
+                    <Button x:Name="buttonDone" Text="Done" />
+                </StackLayout.Children>
+            </StackLayout>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

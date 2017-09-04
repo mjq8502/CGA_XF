@@ -12,7 +12,9 @@ namespace GolfApp2
 
         public App()
         {
-            MainPage = new Main();
+            //MainPage = new Main();
+            var MyAppsFirstPage = new Main();
+            Application.Current.MainPage = new NavigationPage(MyAppsFirstPage);
         }
 
 
