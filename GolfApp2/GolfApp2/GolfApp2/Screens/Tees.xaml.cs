@@ -21,18 +21,41 @@ namespace GolfApp2
 
                 this.BackgroundImage = "screenshot_20170225_142830.png";
 
-                listViewTees.ItemsSource = new List<string> { "Blue", "Black", "Green", "Purple", "Red" };
+                var tees = App.database.GetItems<GolfApp2.Models.Tees>();
+                listViewTees.ItemsSource = tees.Select(x => x.TeeName);
+
 
                 this.buttonAddTee.Clicked += async (sender, args) =>
                 {
-                //await Navigation.PushModalAsync(new TeesEntry());
-                await Application.Current.MainPage.Navigation.PushAsync(new TeesEntry());
+                    await Application.Current.MainPage.Navigation.PushAsync(new TeesEntry());
                 };
+
+                MessagingCenter.Subscribe<Page>(this, "popped", (sender) =>
+                {
+                    tees = App.database.GetItems<GolfApp2.Models.Tees>();
+                    listViewTees.ItemsSource = tees.Select(x => x.TeeName);
+                });
+
             }
             catch (Exception ex)
             {
                 var d = ex;
             }
         }
+
+
+        async void OnAppearing(object sender, EventArgs args)
+        {
+            try
+            {
+                var tees = App.database.GetItems<GolfApp2.Models.Tees>();
+                listViewTees.ItemsSource = tees.Select(x => x.TeeName);
+            }
+            catch(Exception ex)
+            {
+                var e = 7;
+            }
+        }
+
     }
 }

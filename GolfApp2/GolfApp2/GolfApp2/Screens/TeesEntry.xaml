@@ -25,7 +25,7 @@
             
             <StackLayout Grid.Row="2" Orientation="Horizontal" VerticalOptions="Center">
                 <StackLayout.Children>
-                    <Button x:Name="buttonDone" Text="Done" />
+                    <Button x:Name="buttonSave" Text="Save" />
                 </StackLayout.Children>
             </StackLayout>
 

@@ -44,15 +44,26 @@ namespace GolfApp2
         {
             lock (locker)
             {
-                var id = ((BaseItem)(object)item).ID;
-                if (id != 0)
+                try
                 {
-                    connection.Update(item);
-                    return id;
+                    var z = (object)item;
+                    var zz = (BaseItem)z;
+                    var a = zz.ID;
+                    var id = ((BaseItem)(object)item).ID;
+                    if (id != 0)
+                    {
+                        connection.Update(item);
+                        return id;
+                    }
+                    else
+                    {
+                        return connection.Insert(item);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    return connection.Insert(item);
+                    var d = 7;
+                    return -1;
                 }
             }
         }

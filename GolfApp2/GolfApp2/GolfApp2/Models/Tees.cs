@@ -7,10 +7,10 @@ using SQLite;
 
 namespace GolfApp2.Models
 {
-    public class Tees
+    public class Tees : BaseItem
     {
-        [PrimaryKey, AutoIncrement]
-        public int _id { get; set; }
+        //[PrimaryKey, AutoIncrement]
+        //public int _id { get; set; }
         public string TeeName { get; set; }
     }
 

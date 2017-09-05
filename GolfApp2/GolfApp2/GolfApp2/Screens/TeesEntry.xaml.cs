@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GolfApp2.Models;
 
 namespace GolfApp2.Screens
 {
@@ -17,12 +18,13 @@ namespace GolfApp2.Screens
             InitializeComponent();
 
             this.BackgroundImage = "colberthills.png";
+
             try
             {
-                this.buttonDone.Clicked += (sender, args) =>
+                this.buttonSave.Clicked += (sender, args) =>
                 {
-                  //  var zz = Navigation.NavigationStack.SelectMany<Page>();
-                  // this.Navigation.RemovePage(this.Navigation.NavigationStack[this.Navigation.NavigationStack.Count - 1]);
+                    App.database.SaveItem<GolfApp2.Models.Tees>(new GolfApp2.Models.Tees { TeeName = entryTeeName.Text });
+                    MessagingCenter.Send(this, "popped");
                     Application.Current.MainPage.Navigation.PopAsync(); //Remove the page currently on top.
                 };
             }

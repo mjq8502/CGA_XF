@@ -9,9 +9,17 @@ namespace GolfApp2
 {
     public class App : Application
     {
+        public static string perm;
+        public static Database database;
 
         public App()
         {
+            perm = "Permanent";
+            database = new Database("People"); // Creates (if does not exist) a database named People
+            database.CreateTable<Person>(); // Creates (if does not exist) a table of type Tees
+            database.CreateTable<GolfApp2.Models.Tees>();
+            GolfApp2.Models.Tees ts = new Models.Tees();
+            ts.TeeName = "Orange";
             //MainPage = new Main();
             var MyAppsFirstPage = new Main();
             Application.Current.MainPage = new NavigationPage(MyAppsFirstPage);
@@ -20,7 +28,7 @@ namespace GolfApp2
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+
         }
 
         protected override void OnSleep()
