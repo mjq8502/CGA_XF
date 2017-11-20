@@ -12,6 +12,8 @@ namespace GolfApp2.Models
         //[PrimaryKey, AutoIncrement]
         //public int _id { get; set; }
         public string TeeName { get; set; }
+
+        public override string ToString() { return TeeName; }
     }
 
 

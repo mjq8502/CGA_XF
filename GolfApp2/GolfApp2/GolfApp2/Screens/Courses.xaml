@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GolfApp2.Courses">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"                     
+                    iOS="10, 20, 10, 0"                     
+                    Android="10, 0"                     
+                    WinPhone="10, 0" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="65*"/>
+                <RowDefinition Height="15*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="30*" />
+            </Grid.ColumnDefinitions>
+
+     <StackLayout Grid.Row="1" Grid.Column="1">
+      <StackLayout.Children>
+                <ListView x:Name="listViewCourses" BackgroundColor="White" ItemSelected="listViewCourses_ItemSelected"/>
+
+      </StackLayout.Children>
+    </StackLayout>
+
+    <StackLayout Grid.Row="2" Grid.Column="1">
+        <StackLayout.Children>
+
+            <Button x:Name="buttonAddCourse" Text="Add Course" HorizontalOptions="Center" />
+        </StackLayout.Children>
+    </StackLayout>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

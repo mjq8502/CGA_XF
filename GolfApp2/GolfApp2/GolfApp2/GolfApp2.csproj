@@ -42,8 +42,15 @@
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Courses.cs" />
     <Compile Include="Models\Tees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\Courses.xaml.cs">
+      <DependentUpon>Courses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\CourseEntry.xaml.cs">
+      <DependentUpon>CourseEntry.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Screens\TeesEntry.xaml.cs">
       <DependentUpon>TeesEntry.xaml</DependentUpon>
     </Compile>
@@ -96,6 +103,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Screens\TeesEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Screens\Courses.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Screens\CourseEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

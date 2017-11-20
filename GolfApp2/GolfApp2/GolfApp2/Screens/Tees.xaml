@@ -15,18 +15,23 @@
                 <RowDefinition Height="65*"/>
                 <RowDefinition Height="15*"/>
             </Grid.RowDefinitions>
-        
-    <StackLayout Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*" />
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="30*" />
+            </Grid.ColumnDefinitions>
+
+     <StackLayout Grid.Row="1" Grid.Column="1">
       <StackLayout.Children>
-                <ListView x:Name="listViewTees" WidthRequest="200" BackgroundColor="White"/>
+                <ListView x:Name="listViewTees" BackgroundColor="White" ItemSelected="listViewTees_ItemSelected"/>
 
       </StackLayout.Children>
     </StackLayout>
 
-    <StackLayout Grid.Row="2">
+    <StackLayout Grid.Row="2" Grid.Column="1">
         <StackLayout.Children>
 
-            <Button x:Name="buttonAddTee" Text="AddTee" WidthRequest="150"  HorizontalOptions="Center" />
+            <Button x:Name="buttonAddTee" Text="Add Tee" HorizontalOptions="Center" />
         </StackLayout.Children>
     </StackLayout>
             

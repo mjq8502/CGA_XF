@@ -24,7 +24,7 @@ namespace GolfApp2.Screens
                 this.buttonSave.Clicked += (sender, args) =>
                 {
                     App.database.SaveItem<GolfApp2.Models.Tees>(new GolfApp2.Models.Tees { TeeName = entryTeeName.Text });
-                    MessagingCenter.Send(this, "popped");
+                    MessagingCenter.Send< TeesEntry, string >(this, "TeesEntryPopped", null);
                     Application.Current.MainPage.Navigation.PopAsync(); //Remove the page currently on top.
                 };
             }

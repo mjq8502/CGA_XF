@@ -5,9 +5,9 @@
 <ContentPage.Content>
   <StackLayout>
     <StackLayout.Children>
-      <Button Text="Courses" WidthRequest="150"  HorizontalOptions="Center"/>
+      <Button Text="Courses" x:Name="mainCoursesButton" WidthRequest="150"  HorizontalOptions="Center"/>
       <Button Text="Tees" x:Name="mainTeesButton" WidthRequest="150"  HorizontalOptions="Center" />
-      <Button Text="Scores" WidthRequest="150"  HorizontalOptions="Center"/>
+      <Button Text="Scores" x:Name ="mainScoresButton" WidthRequest="150"  HorizontalOptions="Center"/>
     </StackLayout.Children>
   </StackLayout>  
 

@@ -11,6 +11,7 @@ namespace GolfApp2
 {
     public partial class Tees : ContentPage
     {
+
         public Tees()
         {
             try
@@ -22,7 +23,7 @@ namespace GolfApp2
                 this.BackgroundImage = "screenshot_20170225_142830.png";
 
                 var tees = App.database.GetItems<GolfApp2.Models.Tees>();
-                listViewTees.ItemsSource = tees.Select(x => x.TeeName);
+                listViewTees.ItemsSource = tees; //.Select(x => x.TeeName);
 
 
                 this.buttonAddTee.Clicked += async (sender, args) =>
@@ -30,12 +31,14 @@ namespace GolfApp2
                     await Application.Current.MainPage.Navigation.PushAsync(new TeesEntry());
                 };
 
-                MessagingCenter.Subscribe<Page>(this, "popped", (sender) =>
+                // Subscribe to "InformationReady" message.         
+                MessagingCenter.Subscribe<TeesEntry, string>(this, "TeesEntryPopped", (sender, info) =>
                 {
-                    tees = App.database.GetItems<GolfApp2.Models.Tees>();
-                    listViewTees.ItemsSource = tees.Select(x => x.TeeName);
-                });
 
+                    //tees = App.database.GetItems<GolfApp2.Models.Tees>();
+                    listViewTees.ItemsSource = App.database.GetItems<GolfApp2.Models.Tees>();
+
+                });
             }
             catch (Exception ex)
             {
@@ -48,8 +51,8 @@ namespace GolfApp2
         {
             try
             {
-                var tees = App.database.GetItems<GolfApp2.Models.Tees>();
-                listViewTees.ItemsSource = tees.Select(x => x.TeeName);
+                //var tees = App.database.GetItems<GolfApp2.Models.Tees>();
+                //listViewTees.ItemsSource = tees.Select(x => x.TeeName);
             }
             catch(Exception ex)
             {
@@ -57,5 +60,11 @@ namespace GolfApp2
             }
         }
 
+        private void listViewTees_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            GolfApp2.Models.Tees selectedItem = (GolfApp2.Models.Tees)listViewTees.SelectedItem;
+            //App.database.DeleteItem<GolfApp2.Models.Tees>(selectedItem.ID);
+            listViewTees.ItemsSource = App.database.GetItems<GolfApp2.Models.Tees>();
+        }
     }
 }

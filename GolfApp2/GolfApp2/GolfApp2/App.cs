@@ -18,9 +18,10 @@ namespace GolfApp2
             database = new Database("People"); // Creates (if does not exist) a database named People
             database.CreateTable<Person>(); // Creates (if does not exist) a table of type Tees
             database.CreateTable<GolfApp2.Models.Tees>();
+            database.CreateTable<GolfApp2.Models.Courses>();
             GolfApp2.Models.Tees ts = new Models.Tees();
             ts.TeeName = "Orange";
-            //MainPage = new Main();
+            
             var MyAppsFirstPage = new Main();
             Application.Current.MainPage = new NavigationPage(MyAppsFirstPage);
         }
