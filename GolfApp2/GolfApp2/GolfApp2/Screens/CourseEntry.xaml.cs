@@ -23,7 +23,9 @@ namespace GolfApp2.Screens
             {
                 this.buttonSave.Clicked += (sender, args) =>
                 {
-                    App.database.SaveItem<GolfApp2.Models.Courses>(new GolfApp2.Models.Courses { Name = entryName.Text });
+                    App.database.SaveItem<GolfApp2.Models.Courses>(new GolfApp2.Models.Courses { Name = entryName.Text,
+                    City= entryCity.Text, NumberOfHoles = Int32.Parse(entryHoles.Text), StateCode = entryState.Text});
+
                     MessagingCenter.Send< CourseEntry, string >(this, "CourseEntryPopped", null);
                     Application.Current.MainPage.Navigation.PopAsync(); //Remove the page currently on top.
                 };

@@ -21,23 +21,21 @@ namespace GolfApp2
                 InitializeComponent();
 
                 this.BackgroundImage = "screenshot_20170225_142535.png";
-               // this.BackgroundImage = "screenshot_20170225_142830.png";
 
-                var tees = App.database.GetItems<GolfApp2.Models.Tees>();
-                //listViewCourses.ItemsSource = tees; //.Select(x => x.TeeName);
+                var courses = App.database.GetItems<GolfApp2.Models.Courses>();
+                listViewCourses.ItemsSource = courses; //.Select(x => x.TeeName);
 
 
                 this.buttonAddCourse.Clicked += async (sender, args) =>
                 {
-                    await Application.Current.MainPage.Navigation.PushAsync(new TeesEntry());
+                    await Application.Current.MainPage.Navigation.PushAsync(new CourseEntry());
                 };
 
                 // Subscribe to "InformationReady" message.         
-                MessagingCenter.Subscribe<TeesEntry, string>(this, "TeesEntryPopped", (sender, info) =>
+                MessagingCenter.Subscribe<CourseEntry, string>(this, "CourseEntryPopped", (sender, info) =>
                 {
 
-                    //tees = App.database.GetItems<GolfApp2.Models.Tees>();
-                    listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Tees>();
+                    listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Courses>();
 
                 });
             }
@@ -63,9 +61,9 @@ namespace GolfApp2
 
         private void listViewCourses_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            GolfApp2.Models.Tees selectedItem = (GolfApp2.Models.Tees)listViewCourses.SelectedItem;
+            GolfApp2.Models.Courses selectedItem = (GolfApp2.Models.Courses)listViewCourses.SelectedItem;
             //App.database.DeleteItem<GolfApp2.Models.Tees>(selectedItem.ID);
-            listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Tees>();
+            //listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Courses>();
         }
     }
 }

@@ -13,17 +13,42 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50*"/>
                 <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
                 <RowDefinition Height="40*"/>
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" >
                 <StackLayout.Children>
-                    <Label Text="Tee" BackgroundColor="White" VerticalOptions="Center"/>
+                    <Label Text="Name" BackgroundColor="White" VerticalOptions="Center"/>
                     <Entry x:Name="entryName" BackgroundColor="White" WidthRequest="100"/>
                 </StackLayout.Children>
             </StackLayout>
-            
-            <StackLayout Grid.Row="2" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" >
+                <StackLayout.Children>
+                    <Label Text="City" BackgroundColor="White" VerticalOptions="Center"/>
+                    <Entry x:Name="entryCity" BackgroundColor="White" WidthRequest="100"/>
+                </StackLayout.Children>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center" >
+                <StackLayout.Children>
+                    <Label Text="State" BackgroundColor="White" VerticalOptions="Center"/>
+                    <Entry x:Name="entryState" BackgroundColor="White" WidthRequest="100"/>
+                </StackLayout.Children>
+            </StackLayout>
+
+            <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="Center" >
+                <StackLayout.Children>
+                    <Label Text="Holes" BackgroundColor="White" VerticalOptions="Center"/>
+                    <Entry x:Name="entryHoles" BackgroundColor="White" WidthRequest="100"/>
+                </StackLayout.Children>
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
                 <StackLayout.Children>
                     <Button x:Name="buttonSave" Text="Save" HorizontalOptions="Center"/>
                 </StackLayout.Children>
