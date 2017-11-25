@@ -32,13 +32,13 @@ namespace GolfApp2
                 };
 
                 // Subscribe to "InformationReady" message.         
-                MessagingCenter.Subscribe<TeesEntry, string>(this, "TeesEntryPopped", (sender, info) =>
-                {
+                //MessagingCenter.Subscribe<TeesEntry, string>(this, "TeesEntryPopped", (sender, info) =>
+                //{
 
-                    //tees = App.database.GetItems<GolfApp2.Models.Tees>();
-                    listViewTees.ItemsSource = App.database.GetItems<GolfApp2.Models.Tees>();
+                //    //tees = App.database.GetItems<GolfApp2.Models.Tees>();
+                //    listViewTees.ItemsSource = App.database.GetItems<GolfApp2.Models.Tees>();
 
-                });
+                //});
             }
             catch (Exception ex)
             {
@@ -53,6 +53,8 @@ namespace GolfApp2
             {
                 //var tees = App.database.GetItems<GolfApp2.Models.Tees>();
                 //listViewTees.ItemsSource = tees.Select(x => x.TeeName);
+                listViewTees.ItemsSource = App.database.GetItems<GolfApp2.Models.Tees>();
+                var e = 7;
             }
             catch(Exception ex)
             {

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GolfApp2.Screens.CourseEntry">
+             x:Class="GolfApp2.Screens.CourseEntryy">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"                     
                     iOS="10, 20, 10, 0"                     
@@ -11,25 +11,26 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="40*"/>
                 <RowDefinition Height="40*"/>
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" >
                 <StackLayout.Children>
                     <Label Text="Name" BackgroundColor="White" VerticalOptions="Center"/>
-                    <Entry x:Name="entryName" BackgroundColor="White" WidthRequest="100"/>
+                    <Entry x:Name="entryName" BackgroundColor="White" WidthRequest="120"/>
                 </StackLayout.Children>
             </StackLayout>
 
             <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" >
                 <StackLayout.Children>
                     <Label Text="City" BackgroundColor="White" VerticalOptions="Center"/>
-                    <Entry x:Name="entryCity" BackgroundColor="White" WidthRequest="100"/>
+                    <Entry x:Name="entryCity" BackgroundColor="White" WidthRequest="120"/>
                 </StackLayout.Children>
             </StackLayout>
 
@@ -44,11 +45,20 @@
                 <StackLayout.Children>
                     <Label Text="Holes" BackgroundColor="White" VerticalOptions="Center"/>
                     <Entry x:Name="entryHoles" BackgroundColor="White" WidthRequest="100"/>
+                    <Label Text="Par" BackgroundColor="White" VerticalOptions="Center"/>
+                    <Entry x:Name="entryPar" BackgroundColor="White" WidthRequest="100"/>
                 </StackLayout.Children>
             </StackLayout>
 
 
-            <StackLayout Grid.Row="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+            <StackLayout Grid.Row="5" Orientation="Vertical"  VerticalOptions="Center" HorizontalOptions="Center">
+                <StackLayout.Children>
+                    <ListView x:Name="listViewCourseTees" BackgroundColor="White" ItemSelected="listViewCourseTees_ItemSelected"/>
+                    <Button x:Name="buttonAddTee" Text="Add Tee" HorizontalOptions="Center" IsEnabled="False"/>
+                </StackLayout.Children>
+            </StackLayout>
+
+            <StackLayout Grid.Row="6" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
                 <StackLayout.Children>
                     <Button x:Name="buttonSave" Text="Save" HorizontalOptions="Center"/>
                 </StackLayout.Children>

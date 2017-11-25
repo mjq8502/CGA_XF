@@ -17,6 +17,8 @@ namespace GolfApp2.Models
 
         public int NumberOfHoles { get; set; }
 
+        public int Par { get; set; }
+
         public override string ToString() { return Name; }
     }
 }

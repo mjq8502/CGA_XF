@@ -23,7 +23,7 @@
 
      <StackLayout Grid.Row="1" Grid.Column="1">
       <StackLayout.Children>
-                <ListView x:Name="listViewCourses" BackgroundColor="White" ItemSelected="listViewCourses_ItemSelected"/>
+                <ListView x:Name="listViewCourses" BackgroundColor="White" />
 
       </StackLayout.Children>
     </StackLayout>

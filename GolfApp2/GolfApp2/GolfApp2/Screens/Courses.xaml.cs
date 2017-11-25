@@ -28,16 +28,22 @@ namespace GolfApp2
 
                 this.buttonAddCourse.Clicked += async (sender, args) =>
                 {
-                    await Application.Current.MainPage.Navigation.PushAsync(new CourseEntry());
+                    await Application.Current.MainPage.Navigation.PushAsync(new CourseEntryy(null));
+                };
+
+                this.listViewCourses.ItemSelected += async (sender2, args) =>
+                {
+                    GolfApp2.Models.Courses selectedItem = (GolfApp2.Models.Courses)listViewCourses.SelectedItem;
+                    await Application.Current.MainPage.Navigation.PushAsync(new CourseEntryy(selectedItem.ID));
                 };
 
                 // Subscribe to "InformationReady" message.         
-                MessagingCenter.Subscribe<CourseEntry, string>(this, "CourseEntryPopped", (sender, info) =>
-                {
+                //MessagingCenter.Subscribe<CourseEntryy, string>(this, "CourseEntryPopped", (sender, info) =>
+                //{
 
-                    listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Courses>();
+                //    listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Courses>();
 
-                });
+                //});
             }
             catch (Exception ex)
             {
@@ -46,12 +52,12 @@ namespace GolfApp2
         }
 
 
-        async void OnAppearing(object sender, EventArgs args)
+        protected override void OnAppearing()
         {
             try
             {
-                //var tees = App.database.GetItems<GolfApp2.Models.Tees>();
-                //listViewTees.ItemsSource = tees.Select(x => x.TeeName);
+                listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Courses>();
+                var f = 6;
             }
             catch(Exception ex)
             {
@@ -59,11 +65,17 @@ namespace GolfApp2
             }
         }
 
-        private void listViewCourses_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            GolfApp2.Models.Courses selectedItem = (GolfApp2.Models.Courses)listViewCourses.SelectedItem;
-            //App.database.DeleteItem<GolfApp2.Models.Tees>(selectedItem.ID);
-            //listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Courses>();
-        }
-    }
+        //private void listViewCourses_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        //{
+        //    GolfApp2.Models.Courses selectedItem = (GolfApp2.Models.Courses)listViewCourses.SelectedItem;
+        //    //App.database.DeleteItem<GolfApp2.Models.Tees>(selectedItem.ID);
+        //    //listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Courses>();
+        //    //await Application.Current.MainPage.Navigation.PushAsync(new CourseEntryy(null));
+        //    var x = 7;
+
+
+        //}
+
+
+}
 }
