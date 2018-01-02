@@ -18,7 +18,7 @@
       <Button Text="Scores" x:Name ="mainScoresButton" WidthRequest="150"  HorizontalOptions="Center"/>
     </StackLayout.Children>
   </StackLayout>
-            <cv:CarouselViewControl ItemsSource="{Binding Zoos}" x:Name="CarouselZoos" Grid.Row="2">
+            <!--<cv:CarouselViewControl ItemsSource="{Binding Zoos}" x:Name="CarouselZoos" Grid.Row="2">
                 <cv:CarouselViewControl.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -33,7 +33,7 @@
                         </Grid>
                     </DataTemplate>
                 </cv:CarouselViewControl.ItemTemplate>
-            </cv:CarouselViewControl>
+            </cv:CarouselViewControl>-->
         </Grid>
 
     </ContentPage.Content>

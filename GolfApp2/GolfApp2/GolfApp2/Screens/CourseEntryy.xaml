@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              x:Class="GolfApp2.Screens.CourseEntryy">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"                     
@@ -16,8 +17,9 @@
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="40*"/>
-                <RowDefinition Height="40*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" >
@@ -58,7 +60,32 @@
                 </StackLayout.Children>
             </StackLayout>
 
-            <StackLayout Grid.Row="6" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                    <cv:CarouselViewControl ItemsSource="{Binding demoHoles}" x:Name="CarouselHoles" Grid.Row="6" VerticalOptions="CenterAndExpand">
+                        <cv:CarouselViewControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid BackgroundColor="AntiqueWhite">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="22"/>
+                                        <RowDefinition Height="22"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Row="0" Padding="0" Orientation="Horizontal">
+                                        <Label Text="Number: "></Label>
+                                        <Label TextColor="Black" Text="{Binding HoleNumber}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                        <Label Text="Par: "></Label>
+                                        <Label TextColor="Black" Text="{Binding HolePar}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1" Padding="0" Orientation="Horizontal">
+                                        <Label Text="Tee: "></Label>
+                                        <Label TextColor="Black" Text="{Binding HoleTee}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                        <Label Text="Yards: "></Label>
+                                        <Label TextColor="Black" Text="{Binding HoleYards}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </cv:CarouselViewControl.ItemTemplate>
+                    </cv:CarouselViewControl>
+
+            <StackLayout Grid.Row="7" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
                 <StackLayout.Children>
                     <Button x:Name="buttonSave" Text="Save" HorizontalOptions="Center"/>
                 </StackLayout.Children>

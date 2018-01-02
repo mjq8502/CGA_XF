@@ -7,14 +7,25 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GolfApp2.Models;
+using System.Collections.ObjectModel;
 
 namespace GolfApp2.Screens
 {
+    public class DemoHole
+    {
+        public int HoleNumber { get; set; }
+        public int HolePar { get; set; }
+        public string HoleTee { get; set; }
+        public int HoleYards { get; set; }
+    }
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CourseEntryy : ContentPage
     {
         SelectMultipleBasePage<CheckItem> multiPage;
         private int currentCourseID;
+
+        public ObservableCollection<DemoHole> demoHoles { get; set; }
 
         public CourseEntryy(int? courseID)
         {
@@ -68,6 +79,33 @@ namespace GolfApp2.Screens
                     //MessagingCenter.Send< CourseEntryy, string >(this, "CourseEntryPopped", null);
                     //Application.Current.MainPage.Navigation.PopAsync(); //Remove the page currently on top.
                 };
+
+                demoHoles = new ObservableCollection<DemoHole>
+                {
+                    new DemoHole
+                    {
+                        HoleNumber = 1,
+                        HolePar = 4,
+                        HoleTee = "Red",
+                        HoleYards = 303
+                    },
+                        new DemoHole
+                    {
+                        HoleNumber = 2,
+                        HolePar = 3,
+                        HoleTee = "Red",
+                        HoleYards = 113
+                    },
+                    new DemoHole
+                    {
+                        HoleNumber = 3,
+                        HolePar = 3,
+                        HoleTee = "Red",
+                        HoleYards = 120
+                    }
+                };
+
+                this.CarouselHoles.ItemsSource = demoHoles;
             }
 
 
