@@ -12,54 +12,74 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="15*"/>
                 <RowDefinition Height="30*"/>
                 <RowDefinition Height="30*"/>
-                <RowDefinition Height="20*"/>
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Center" >
                 <StackLayout.Children>
                     <Label Text="Name" BackgroundColor="White" VerticalOptions="Center"/>
-                    <Entry x:Name="entryName" BackgroundColor="White" WidthRequest="120"/>
+                    <Entry x:Name="entryName" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                    <Label x:Name="labelName" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
                 </StackLayout.Children>
             </StackLayout>
 
             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="Center" >
                 <StackLayout.Children>
-                    <Label Text="City" BackgroundColor="White" VerticalOptions="Center"/>
-                    <Entry x:Name="entryCity" BackgroundColor="White" WidthRequest="120"/>
-                   <Label Text="State" BackgroundColor="White" VerticalOptions="Center"/>
-                   <Entry x:Name="entryState" BackgroundColor="White" WidthRequest="100"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120*"/>
+                            <ColumnDefinition Width="120*"/>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="City" Grid.Column="0" BackgroundColor="White" VerticalOptions="Center"/>
+                        <Entry x:Name="entryCity" Grid.Column="1" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                        <Label x:Name="labelCity" Grid.Column="1" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
+                        <Label Text="State" Grid.Column="2" BackgroundColor="White" VerticalOptions="Center"/>
+                        <Entry x:Name="entryState" Grid.Column="3" BackgroundColor="White" WidthRequest="100" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                        <Label x:Name="labelState" Grid.Column="3" BackgroundColor="White" WidthRequest="100" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
+                    </Grid>
                 </StackLayout.Children>
             </StackLayout>
 
             <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" >
                 <StackLayout.Children>
                     <Label Text="Holes" BackgroundColor="White" VerticalOptions="Center"/>
-                    <Entry x:Name="entryHoles" BackgroundColor="White" WidthRequest="30"/>
+                    <Entry x:Name="entryHoles" BackgroundColor="White" WidthRequest="30"  IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                    <Label x:Name="labelHoles" BackgroundColor="White" WidthRequest="30" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
                     <Label Text="Par" BackgroundColor="White" VerticalOptions="Center"/>
-                    <Entry x:Name="entryPar" BackgroundColor="White" WidthRequest="30"/>
+                    <Entry x:Name="entryPar" BackgroundColor="White" WidthRequest="30" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                    <Label x:Name="labelPar" BackgroundColor="White" WidthRequest="30" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
+                </StackLayout.Children>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                <StackLayout.Children>
+                    <Button x:Name="buttonSave" Text="Save" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </StackLayout.Children>
             </StackLayout>
 
 
-            <StackLayout Grid.Row="3" Orientation="Vertical"  VerticalOptions="Center" HorizontalOptions="Center">
+            <StackLayout Grid.Row="4" Orientation="Vertical"  VerticalOptions="Center" HorizontalOptions="Center">
                 <StackLayout.Children>
                     <ListView x:Name="listViewCourseTees" BackgroundColor="White" ItemSelected="listViewCourseTees_ItemSelected"/>
                     <Button x:Name="buttonAddTee" Text="Add Tee" HorizontalOptions="Center" IsEnabled="False"/>
                 </StackLayout.Children>
             </StackLayout>
 
-            <cv:CarouselViewControl ItemsSource="{Binding demoHoles}" x:Name="CarouselHoles" Grid.Row="4" VerticalOptions="CenterAndExpand">
+            <cv:CarouselViewControl ItemsSource="{Binding demoHoles}" x:Name="CarouselHoles" Grid.Row="5" VerticalOptions="CenterAndExpand">
                 <cv:CarouselViewControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid BackgroundColor="AntiqueWhite">
+                        <Grid BackgroundColor="AntiqueWhite" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="22"/>
                                 <RowDefinition Height="22"/>
+                                <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
                             <StackLayout Grid.Row="0" Padding="0" Orientation="Horizontal">
                                 <Label Text="Number: "></Label>
@@ -73,16 +93,13 @@
                                 <Label Text="Yards: "></Label>
                                 <Label TextColor="Black" Text="{Binding HoleYards}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                             </StackLayout>
+                            <StackLayout Grid.Row="2" Padding="0" Orientation="Horizontal">
+                                <Button x:Name="buttonCarouselSave" Clicked="buttonCarouselSave_Clicked" Text="Save" WidthRequest="60" HorizontalOptions="Center"/>
+                            </StackLayout>
                         </Grid>
                     </DataTemplate>
                 </cv:CarouselViewControl.ItemTemplate>
             </cv:CarouselViewControl>
-
-            <StackLayout Grid.Row="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
-                <StackLayout.Children>
-                    <Button x:Name="buttonSave" Text="Save" HorizontalOptions="Center"/>
-                </StackLayout.Children>
-            </StackLayout>
 
 
         </Grid>

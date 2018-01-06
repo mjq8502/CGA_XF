@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GolfApp2.Models;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace GolfApp2.Screens
 {
@@ -20,16 +21,67 @@ namespace GolfApp2.Screens
     }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CourseEntryy : ContentPage
+    public partial class CourseEntryy : ContentPage, INotifyPropertyChanged
     {
         SelectMultipleBasePage<CheckItem> multiPage;
         private int currentCourseID;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ObservableCollection<DemoHole> demoHoles { get; set; }
+
+        private bool _IsLabelMode;
+        public bool IsLabelMode
+        {
+            get
+            {
+                return _IsLabelMode;
+            }
+
+            set
+            {
+                _IsLabelMode = value;
+                // Fire the event. 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsLabelMode"));
+            }
+        }
+
+        private bool _IsEditMode;
+        public bool IsEditMode
+        {
+            get
+            {
+                return _IsEditMode;
+            }
+
+            set
+            {
+                _IsEditMode = value;
+                // Fire the event. 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsEditMode"));
+            }
+        }
+
+        private double _editOpacity;
+        public double EditOpacity
+        {
+            get
+            {
+                return _editOpacity;
+            }
+
+            set
+            {
+                _editOpacity = value;
+                // Fire the event. 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("EditOpacity"));
+            }
+        }
 
         public CourseEntryy(int? courseID)
         {
             InitializeComponent();
+            BindingContext = this;
 
             this.BackgroundImage = "colberthills.png";
 
@@ -38,11 +90,25 @@ namespace GolfApp2.Screens
                 var course = App.database.GetItems<GolfApp2.Models.Courses>().Where(c => c.ID == courseID).FirstOrDefault();
                 buttonAddTee.IsEnabled = true;
                 entryName.Text = course.Name;
-                entryCity.Text = course.City;
+                labelName.Text = course.Name;
+                entryCity.Text = "eeee"; // course.City;
+                labelCity.Text = "xx"; // course.City;
                 entryState.Text = course.StateCode;
+                labelState.Text = course.StateCode;
                 entryHoles.Text = course.NumberOfHoles.ToString();
+                labelHoles.Text = course.NumberOfHoles.ToString();
                 entryPar.Text = course.Par.ToString();
+                labelPar.Text = course.Par.ToString();
                 currentCourseID = (int)courseID;
+                IsEditMode = false;
+                EditOpacity = 0;
+                IsLabelMode = true;
+            }
+            else
+            {
+                IsEditMode = true;
+                EditOpacity = 1.0;
+                IsLabelMode = false;
             }
 
             try
@@ -66,6 +132,18 @@ namespace GolfApp2.Screens
                     }
                     else
                     {
+
+
+                        if(IsEditMode)
+                        {
+                            IsEditMode = false;
+                            IsLabelMode = true;
+                        }
+                        else
+                        {
+                            IsEditMode = true;
+                            IsLabelMode = false;
+                        }
                         // Do an update here.
                         //App.database.SaveItem<GolfApp2.Models.Courses>(new GolfApp2.Models.Courses
                         //{
@@ -160,6 +238,20 @@ namespace GolfApp2.Screens
         private void listViewCourseTees_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
 
+        }
+
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var x = this.CarouselHoles.Position; 
+            
+            var z = 7;
+        }
+
+        private void buttonCarouselSave_Clicked(object sender, EventArgs e)
+        {
+            var x = this.CarouselHoles.Position;
+
+            var z = 7;
         }
     }
 }
