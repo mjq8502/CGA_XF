@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto"
+          android:allowBackup="true" android:fullBackupContent="@xml/my_backup_rules">
 	<uses-sdk android:minSdkVersion="21" />
 	<application android:label="GolfApp2.Droid"></application>
 </manifest>
