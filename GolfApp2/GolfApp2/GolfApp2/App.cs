@@ -15,13 +15,13 @@ namespace GolfApp2
         public App()
         {
             perm = "Permanent";
-            database = new Database("People"); // Creates (if does not exist) a database named People
+            database = new Database("GolfApp2"); // Creates (if does not exist) a database named People
             database.CreateTable<Person>(); // Creates (if does not exist) a table of type Tees
             database.CreateTable<GolfApp2.Models.Tees>();
             database.CreateTable<GolfApp2.Models.Courses>();
             database.CreateTable<GolfApp2.Models.CourseTee>();
-            GolfApp2.Models.Tees ts = new Models.Tees();
-            ts.TeeName = "Orange";
+            //GolfApp2.Models.Tees ts = new Models.Tees();
+            //ts.TeeName = "Orange";
             
             var MyAppsFirstPage = new Main();
             Application.Current.MainPage = new NavigationPage(MyAppsFirstPage);

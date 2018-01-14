@@ -15,7 +15,7 @@ namespace GolfApp2.Droid
                 throw new ArgumentException("Invalid database name", nameof(databaseName));
             }
             var sqliteFilename = $"{databaseName}.db3";
-            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var documentsPath = "/sdcard"; // Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(documentsPath, sqliteFilename);
             return path;
         }
