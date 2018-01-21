@@ -7,7 +7,7 @@ using SQLite;
 
 namespace GolfApp2.Models
 {
-    class Courses : BaseItem
+    public class Course : BaseItem
     {
         public string Name { get; set; }
 

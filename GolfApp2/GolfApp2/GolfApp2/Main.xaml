@@ -11,29 +11,15 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-  <StackLayout Grid.Row="1">
-    <StackLayout.Children>
-      <Button Text="Courses" x:Name="mainCoursesButton" WidthRequest="150"  HorizontalOptions="Center"/>
-      <Button Text="Tees" x:Name="mainTeesButton" WidthRequest="150"  HorizontalOptions="Center" />
-      <Button Text="Scores" x:Name ="mainScoresButton" WidthRequest="150"  HorizontalOptions="Center"/>
-    </StackLayout.Children>
-  </StackLayout>
-            <!--<cv:CarouselViewControl ItemsSource="{Binding Zoos}" x:Name="CarouselZoos" Grid.Row="2">
-                <cv:CarouselViewControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding ImageUrl}"/>
-                            <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
-                                <Label TextColor="Black" Text="{Binding Name}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
-                            </StackLayout>
-                        </Grid>
-                    </DataTemplate>
-                </cv:CarouselViewControl.ItemTemplate>
-            </cv:CarouselViewControl>-->
+            
+              <StackLayout Grid.Row="1">
+                <StackLayout.Children>
+                  <Button Text="Courses" x:Name="mainCoursesButton" WidthRequest="150"  HorizontalOptions="Center"/>
+                  <Button Text="Tees" x:Name="mainTeesButton" WidthRequest="150"  HorizontalOptions="Center" />
+                  <Button Text="Scores" x:Name ="mainScoresButton" WidthRequest="150"  HorizontalOptions="Center"/>
+                </StackLayout.Children>
+              </StackLayout>
+
         </Grid>
 
     </ContentPage.Content>

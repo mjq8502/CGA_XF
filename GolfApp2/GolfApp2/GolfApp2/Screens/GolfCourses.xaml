@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GolfApp2.Courses">
+             x:Class="GolfApp2.GolfCourses">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"                     
                     iOS="10, 20, 10, 0"                     
@@ -23,7 +23,7 @@
 
      <StackLayout Grid.Row="1" Grid.Column="1">
       <StackLayout.Children>
-                <ListView x:Name="listViewCourses" BackgroundColor="White" />
+                <ListView x:Name="listViewCourses" ItemsSource="{Binding Courses}" BackgroundColor="White" />
 
       </StackLayout.Children>
     </StackLayout>

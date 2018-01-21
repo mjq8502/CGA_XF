@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using GolfApp2.Screens;
+using System.ComponentModel;
+using System.Collections.ObjectModel;
+using GolfApp2.Models;
 
 namespace GolfApp2
 {
-    public partial class Courses : ContentPage
+    public partial class GolfCourses : ContentPage
     {
 
-        public Courses()
+        public GolfCourses()
         {
             try
             {
@@ -20,10 +23,12 @@ namespace GolfApp2
 
                 InitializeComponent();
 
+                this.BindingContext = new GolfApp2.GolfCoursesViewModel();
+
                 this.BackgroundImage = "screenshot_20170225_142535.png";
 
-                var courses = App.database.GetItems<GolfApp2.Models.Courses>();
-                listViewCourses.ItemsSource = courses; //.Select(x => x.TeeName);
+                //var courses = App.database.GetItems<GolfApp2.Models.Course>();
+                //listViewCourses.ItemsSource = courses; //.Select(x => x.TeeName);
 
 
                 this.buttonAddCourse.Clicked += async (sender, args) =>
@@ -33,7 +38,7 @@ namespace GolfApp2
 
                 this.listViewCourses.ItemSelected += async (sender2, args) =>
                 {
-                    GolfApp2.Models.Courses selectedItem = (GolfApp2.Models.Courses)listViewCourses.SelectedItem;
+                    GolfApp2.Models.Course selectedItem = (GolfApp2.Models.Course)listViewCourses.SelectedItem;
                     await Application.Current.MainPage.Navigation.PushAsync(new CourseEntryy(selectedItem.ID));
                 };
 
@@ -56,8 +61,9 @@ namespace GolfApp2
         {
             try
             {
-                listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Courses>();
+                //listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Course>();
                 var f = 6;
+                MessagingCenter.Send<GolfCourses>(this, "Hey");
             }
             catch(Exception ex)
             {

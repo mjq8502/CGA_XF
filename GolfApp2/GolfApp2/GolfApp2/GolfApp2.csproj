@@ -42,12 +42,12 @@
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Courses.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseTee.cs" />
     <Compile Include="Models\Tees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screens\Courses.xaml.cs">
-      <DependentUpon>Courses.xaml</DependentUpon>
+    <Compile Include="Screens\GolfCourses.xaml.cs">
+      <DependentUpon>GolfCourses.xaml</DependentUpon>
     </Compile>
     <Compile Include="Screens\CourseEntryy.xaml.cs">
       <DependentUpon>CourseEntryy.xaml</DependentUpon>
@@ -60,6 +60,7 @@
     <Compile Include="Screens\Tees.xaml.cs">
       <DependentUpon>Tees.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\GolfCoursesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="CarouselView.FormsPlugin.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -114,7 +115,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Screens\Courses.xaml">
+    <EmbeddedResource Include="Screens\GolfCourses.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

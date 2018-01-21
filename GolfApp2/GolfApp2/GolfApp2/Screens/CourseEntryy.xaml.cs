@@ -87,7 +87,7 @@ namespace GolfApp2.Screens
 
             if (courseID != null)
             {
-                var course = App.database.GetItems<GolfApp2.Models.Courses>().Where(c => c.ID == courseID).FirstOrDefault();
+                var course = App.database.GetItems<GolfApp2.Models.Course>().Where(c => c.ID == courseID).FirstOrDefault();
                 buttonAddTee.IsEnabled = true;
                 entryName.Text = course.Name;
                 labelName.Text = course.Name;
@@ -117,7 +117,7 @@ namespace GolfApp2.Screens
                 {
                     if (courseID == null)
                     {
-                        App.database.SaveItem<GolfApp2.Models.Courses>(new GolfApp2.Models.Courses
+                        App.database.SaveItem<GolfApp2.Models.Course>(new GolfApp2.Models.Course
                         {
                             Name = entryName.Text,
                             City = entryCity.Text,
@@ -126,7 +126,7 @@ namespace GolfApp2.Screens
                             Par = Int32.Parse(entryPar.Text)
                         });
                         // Get the newly added course
-                        var newCourse = App.database.GetItems<GolfApp2.Models.Courses>().Where(t => t.Name == entryName.Text).FirstOrDefault();
+                        var newCourse = App.database.GetItems<GolfApp2.Models.Course>().Where(t => t.Name == entryName.Text).FirstOrDefault();
                         currentCourseID = newCourse.ID;
                         buttonAddTee.IsEnabled = true;
                     }

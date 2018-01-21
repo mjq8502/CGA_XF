@@ -18,7 +18,7 @@ namespace GolfApp2
             database = new Database("GolfApp2"); // Creates (if does not exist) a database named People
             database.CreateTable<Person>(); // Creates (if does not exist) a table of type Tees
             database.CreateTable<GolfApp2.Models.Tees>();
-            database.CreateTable<GolfApp2.Models.Courses>();
+            database.CreateTable<GolfApp2.Models.Course>();
             database.CreateTable<GolfApp2.Models.CourseTee>();
             //GolfApp2.Models.Tees ts = new Models.Tees();
             //ts.TeeName = "Orange";
