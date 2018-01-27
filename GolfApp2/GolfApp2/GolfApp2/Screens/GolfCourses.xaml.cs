@@ -63,7 +63,7 @@ namespace GolfApp2
             {
                 //listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Course>();
                 var f = 6;
-                MessagingCenter.Send<GolfCourses>(this, "Hey");
+                MessagingCenter.Send<GolfCourses>(this, "GolfCourses_OnAppearing");
             }
             catch(Exception ex)
             {

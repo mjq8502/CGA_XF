@@ -23,8 +23,8 @@
             <StackLayout Grid.Row="0" Orientation="Horizontal" HorizontalOptions="Center" >
                 <StackLayout.Children>
                     <Label Text="Name" BackgroundColor="White" VerticalOptions="Center"/>
-                    <Entry x:Name="entryName" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
-                    <Label x:Name="labelName" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
+                    <Entry x:Name="entryName" Text="{Binding Course.Name}" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                    <Label x:Name="labelName" Text="{Binding Course.Name}" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
                 </StackLayout.Children>
             </StackLayout>
 
@@ -38,11 +38,11 @@
                             <ColumnDefinition Width="100*"/>
                         </Grid.ColumnDefinitions>
                         <Label Text="City" Grid.Column="0" BackgroundColor="White" VerticalOptions="Center"/>
-                        <Entry x:Name="entryCity" Grid.Column="1" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
-                        <Label x:Name="labelCity" Grid.Column="1" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
+                        <Entry x:Name="entryCity" Text="{Binding Course.City}" Grid.Column="1" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                        <Label x:Name="labelCity" Text="{Binding Course.City}" Grid.Column="1" BackgroundColor="White" WidthRequest="120" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
                         <Label Text="State" Grid.Column="2" BackgroundColor="White" VerticalOptions="Center"/>
-                        <Entry x:Name="entryState" Grid.Column="3" BackgroundColor="White" WidthRequest="100" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
-                        <Label x:Name="labelState" Grid.Column="3" BackgroundColor="White" WidthRequest="100" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
+                        <Entry x:Name="entryState" Text="{Binding Course.StateCode}" Grid.Column="3" BackgroundColor="White" WidthRequest="100" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                        <Label x:Name="labelState" Text="{Binding Course.StateCode}" Grid.Column="3" BackgroundColor="White" WidthRequest="100" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
                     </Grid>
                 </StackLayout.Children>
             </StackLayout>
@@ -50,25 +50,26 @@
             <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center" >
                 <StackLayout.Children>
                     <Label Text="Holes" BackgroundColor="White" VerticalOptions="Center"/>
-                    <Entry x:Name="entryHoles" BackgroundColor="White" WidthRequest="30"  IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
-                    <Label x:Name="labelHoles" BackgroundColor="White" WidthRequest="30" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
+                    <Entry x:Name="entryHoles" Text="{Binding Course.NumberOfHoles}" BackgroundColor="White" WidthRequest="30"  IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                    <Label x:Name="labelHoles" Text="{Binding Course.NumberOfHoles}" BackgroundColor="White" WidthRequest="30" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
                     <Label Text="Par" BackgroundColor="White" VerticalOptions="Center"/>
-                    <Entry x:Name="entryPar" BackgroundColor="White" WidthRequest="30" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
-                    <Label x:Name="labelPar" BackgroundColor="White" WidthRequest="30" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
+                    <Entry x:Name="entryPar" Text="{Binding Course.Par}" BackgroundColor="White" WidthRequest="30" IsVisible="{Binding IsEditMode}" IsEnabled="{Binding IsEditMode}" VerticalOptions="Center"/>
+                    <Label x:Name="labelPar" Text="{Binding Course.Par}" BackgroundColor="White" WidthRequest="30" IsVisible="{Binding IsLabelMode}" VerticalOptions="Center"/>
                 </StackLayout.Children>
             </StackLayout>
 
             <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
                 <StackLayout.Children>
-                    <Button x:Name="buttonSave" Text="Save" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button x:Name="buttonSave" Command="{Binding ButtonSave_Clicked}" Text="Save" HorizontalOptions="Center" VerticalOptions="Center"/>
                 </StackLayout.Children>
             </StackLayout>
 
 
             <StackLayout Grid.Row="4" Orientation="Vertical"  VerticalOptions="Center" HorizontalOptions="Center">
                 <StackLayout.Children>
-                    <ListView x:Name="listViewCourseTees" BackgroundColor="White" ItemSelected="listViewCourseTees_ItemSelected"/>
-                    <Button x:Name="buttonAddTee" Text="Add Tee" HorizontalOptions="Center" IsEnabled="False"/>
+                    <ListView x:Name="listViewCourseTees" BackgroundColor="White" ItemsSource="{Binding courseTees}" ItemSelected="listViewCourseTees_ItemSelected"/>
+                    <Button x:Name="buttonAddTee" Text="Add Tee" Command="{Binding ButtonAdd_Clicked}" HorizontalOptions="Center" IsEnabled="False"/>
+                    <!--<Button x:Name="buttonAddTee" Text="Add Tee" HorizontalOptions="Center" IsEnabled="False"/>-->
                 </StackLayout.Children>
             </StackLayout>
 

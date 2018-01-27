@@ -60,6 +60,7 @@
     <Compile Include="Screens\Tees.xaml.cs">
       <DependentUpon>Tees.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CourseEntryyViewModel.cs" />
     <Compile Include="ViewModel\GolfCoursesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

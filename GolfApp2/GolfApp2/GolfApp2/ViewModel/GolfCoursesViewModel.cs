@@ -43,11 +43,7 @@ namespace GolfApp2
             try
             {
 
-                //var courses = App.database.GetItems<GolfApp2.Models.Course>();
-                //Courses = new ObservableCollection<GolfApp2.Models.Course>(courses);
-
-                MessagingCenter.Subscribe<GolfCourses>(this, "Hey", (sender) => {
-                    // do something whenever the "Hi" message is sent
+                MessagingCenter.Subscribe<GolfCourses>(this, "GolfCourses_OnAppearing", (sender) => {
                     var crs = App.database.GetItems<GolfApp2.Models.Course>();
                     Courses = new ObservableCollection<GolfApp2.Models.Course>(crs);
                 });
@@ -61,19 +57,19 @@ namespace GolfApp2
         }
 
 
-        protected override void OnAppearing()
-        {
-            try
-            {
-                var courses = App.database.GetItems<GolfApp2.Models.Course>();
-                Courses = new ObservableCollection<GolfApp2.Models.Course>(courses);
-                var f = 6;
-            }
-            catch (Exception ex)
-            {
-                var e = 7;
-            }
-        }
+        //protected override void OnAppearing()
+        //{
+        //    try
+        //    {
+        //        var courses = App.database.GetItems<GolfApp2.Models.Course>();
+        //        Courses = new ObservableCollection<GolfApp2.Models.Course>(courses);
+        //        var f = 6;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var e = 7;
+        //    }
+        //}
 
 
 
