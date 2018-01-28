@@ -31,7 +31,16 @@ namespace GolfApp2.ViewModel
 
         public ObservableCollection<GolfApp2.Screens.DemoHole> demoHoles { get; set; }
 
-        public ObservableCollection<CourseTee> courseTees { get; set; }
+        private ObservableCollection<CourseTee> _courseTees;
+        public ObservableCollection<CourseTee> courseTees
+        {
+            get { return _courseTees; }
+            set
+            {
+                _courseTees = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("courseTees"));
+            }
+        }
 
         private bool _IsLabelMode;
         public bool IsLabelMode
@@ -174,14 +183,14 @@ namespace GolfApp2.ViewModel
                             IsLabelMode = false;
                         }
                         // Do an update here.
-                        //App.database.SaveItem<GolfApp2.Models.Courses>(new GolfApp2.Models.Courses
-                        //{
-                        //    Name = entryName.Text,
-                        //    City = entryCity.Text,
-                        //    StateCode = entryState.Text,
-                        //    NumberOfHoles = Int32.Parse(entryHoles.Text),
-                        //    Par = Int32.Parse(entryPar.Text)
-                        //});
+                        App.database.SaveItem<GolfApp2.Models.Course>(new GolfApp2.Models.Course
+                        {
+                            Name = Course.Name, // entryName.Text,
+                            City = Course.City,
+                            StateCode = Course.StateCode,
+                            NumberOfHoles = Course.NumberOfHoles,
+                            Par = Course.Par
+                        });
                     }
                 });
 
@@ -214,6 +223,32 @@ namespace GolfApp2.ViewModel
                         HoleYards = 120
                     }
                 };
+
+                MessagingCenter.Subscribe<CourseEntryy>(this, "CourseEntryy_OnAppearing", (sender) => {
+                    if (multiPage != null)
+                    {
+
+                        var answers = multiPage.GetSelection();
+                        foreach (var a in answers)
+                        {
+                            var tee = App.database.GetItems<GolfApp2.Models.Tees>().Where(t => t.TeeName == a.Name).FirstOrDefault();
+                            App.database.SaveItem<GolfApp2.Models.CourseTee>(new GolfApp2.Models.CourseTee
+                            {
+                                CourseID = currentCourseID,
+                                TeeID = tee.ID
+                            });
+                        }
+                    }
+                    else
+                    {
+                        var t = 6;
+                    }
+
+                    courseTees = new ObservableCollection<CourseTee>(App.database.GetItems<CourseTee>().Where(c => c.CourseID == courseID));
+
+                });
+
+
 
             }
 
