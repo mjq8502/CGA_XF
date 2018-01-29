@@ -42,6 +42,17 @@ namespace GolfApp2.ViewModel
             }
         }
 
+        private ObservableCollection<GolfApp2.Models.Tees> _Tees;
+        public ObservableCollection<GolfApp2.Models.Tees> Tees
+        {
+            get { return _Tees; }
+            set
+            {
+                _Tees = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Tees"));
+            }
+        }
+
         private bool _IsLabelMode;
         public bool IsLabelMode
         {
@@ -225,27 +236,38 @@ namespace GolfApp2.ViewModel
                 };
 
                 MessagingCenter.Subscribe<CourseEntryy>(this, "CourseEntryy_OnAppearing", (sender) => {
-                    if (multiPage != null)
+                    try
                     {
-
-                        var answers = multiPage.GetSelection();
-                        foreach (var a in answers)
+                        if (multiPage != null)
                         {
-                            var tee = App.database.GetItems<GolfApp2.Models.Tees>().Where(t => t.TeeName == a.Name).FirstOrDefault();
-                            App.database.SaveItem<GolfApp2.Models.CourseTee>(new GolfApp2.Models.CourseTee
+
+                            var answers = multiPage.GetSelection();
+                            foreach (var a in answers)
                             {
-                                CourseID = currentCourseID,
-                                TeeID = tee.ID
-                            });
+                                var tee = App.database.GetItems<GolfApp2.Models.Tees>().Where(t => t.TeeName == a.Name).FirstOrDefault();
+                                App.database.SaveItem<GolfApp2.Models.CourseTee>(new GolfApp2.Models.CourseTee
+                                {
+                                    CourseID = currentCourseID,
+                                    TeeID = tee.ID
+                                });
+                            }
                         }
+                        else
+                        {
+                            var t = 6;
+                        }
+
+                        courseTees = new ObservableCollection<CourseTee>(App.database.GetItems<CourseTee>().Where(c => c.CourseID == courseID));
+                        string[] oc = new string[1];
+                        oc[0] = currentCourseID.ToString();
+                        Tees = new ObservableCollection<GolfApp2.Models.Tees>(App.database.Query<GolfApp2.Models.Tees>("SELECT t.TeeName FROM Tees t, CourseTee ct WHERE ct.TeeID = t.ID AND ct.CourseID = " + currentCourseID.ToString().Trim(), oc));
+      
+                        var zz = 4;
                     }
-                    else
+                    catch (Exception ex )
                     {
-                        var t = 6;
+                        var d = 4;
                     }
-
-                    courseTees = new ObservableCollection<CourseTee>(App.database.GetItems<CourseTee>().Where(c => c.CourseID == courseID));
-
                 });
 
 

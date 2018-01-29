@@ -67,7 +67,7 @@
 
             <StackLayout Grid.Row="4" Orientation="Vertical"  VerticalOptions="Center" HorizontalOptions="Center">
                 <StackLayout.Children>
-                    <ListView x:Name="listViewCourseTees" BackgroundColor="White" ItemsSource="{Binding courseTees}" ItemSelected="listViewCourseTees_ItemSelected"/>
+                    <ListView x:Name="listViewCourseTees" BackgroundColor="White" ItemsSource="{Binding Tees, Path=TeeName}" ItemSelected="listViewCourseTees_ItemSelected"/>
                     <Button x:Name="buttonAddTee" Text="Add Tee" Command="{Binding ButtonAdd_Clicked}" HorizontalOptions="Center" IsEnabled="False"/>
                     <!--<Button x:Name="buttonAddTee" Text="Add Tee" HorizontalOptions="Center" IsEnabled="False"/>-->
                 </StackLayout.Children>

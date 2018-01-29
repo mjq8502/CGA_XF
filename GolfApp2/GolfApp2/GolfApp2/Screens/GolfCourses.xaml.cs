@@ -27,10 +27,6 @@ namespace GolfApp2
 
                 this.BackgroundImage = "screenshot_20170225_142535.png";
 
-                //var courses = App.database.GetItems<GolfApp2.Models.Course>();
-                //listViewCourses.ItemsSource = courses; //.Select(x => x.TeeName);
-
-
                 this.buttonAddCourse.Clicked += async (sender, args) =>
                 {
                     await Application.Current.MainPage.Navigation.PushAsync(new CourseEntryy(null));
@@ -42,13 +38,7 @@ namespace GolfApp2
                     await Application.Current.MainPage.Navigation.PushAsync(new CourseEntryy(selectedItem.ID));
                 };
 
-                // Subscribe to "InformationReady" message.         
-                //MessagingCenter.Subscribe<CourseEntryy, string>(this, "CourseEntryPopped", (sender, info) =>
-                //{
 
-                //    listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Courses>();
-
-                //});
             }
             catch (Exception ex)
             {
@@ -61,7 +51,7 @@ namespace GolfApp2
         {
             try
             {
-                //listViewCourses.ItemsSource = App.database.GetItems<GolfApp2.Models.Course>();
+
                 var f = 6;
                 MessagingCenter.Send<GolfCourses>(this, "GolfCourses_OnAppearing");
             }
